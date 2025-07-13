@@ -1,0 +1,64 @@
+{
+  "name": "enhanced-peer-deps",
+  "version": "1.2.1",
+  "description": "Enhanced peer dependency resolution for npm, yarn, and pnpm",
+  "type": "module",
+  "bin": {
+    "epd": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test test/",
+    "scan": "node dist/index.js scan",
+    "security": "node dist/index.js security",
+    "outdated": "node dist/index.js outdated",
+    "interactive": "node dist/index.js interactive",
+    "install-scanner": "node dist/index.js install-scanner",
+    "prepublishOnly": "npm run build",
+    "dev": "tsc --watch",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "npm",
+    "yarn",
+    "pnpm",
+    "peer-dependencies",
+    "monorepo",
+    "dependency-management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "semver": "^7.5.4"
+  },
+  "devDependencies": {
+    "glob": "^11.0.2",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.5",
+    "@types/semver": "^7.5.6",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davitacols/epd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davitacols/epd/issues"
+  },
+  "homepage": "https://github.com/davitacols/epd#readme"
+}

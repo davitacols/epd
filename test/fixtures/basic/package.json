@@ -1,0 +1,11 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "unused-package": "1.0.0",
+    "used-package": "1.0.0"
+  },
+  "devDependencies": {
+    "unused-dev-package": "1.0.0"
+  }
+}

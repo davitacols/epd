@@ -1,0 +1,16 @@
+{
+  "packageManager": "npm",
+  "autoResolve": true,
+  "interactive": false,
+  "ignorePackages": [
+    "@types/node",
+    "typescript"
+  ],
+  "preferredVersions": {
+    "react": "^18.0.0",
+    "lodash": "^4.17.21"
+  },
+  "registryUrl": "https://registry.npmjs.org/",
+  "timeout": 30000,
+  "retries": 3
+}
