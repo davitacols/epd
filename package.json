@@ -1,6 +1,6 @@
 {
   "name": "enhanced-peer-deps",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Enhanced peer dependency resolution for npm, yarn, and pnpm",
   "type": "module",
   "bin": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "node --test test/",
+    "test": "node --test test/index.test.js",
     "scan": "node dist/index.js scan",
     "security": "node dist/index.js security",
     "outdated": "node dist/index.js outdated",

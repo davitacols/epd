@@ -2,7 +2,7 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { scanUnusedDependencies, generateUnusedDependenciesReport } from '../dependency-scanner.js'
+import { scanUnusedDependencies, generateUnusedDependenciesReport } from '../dist/dependency-scanner.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

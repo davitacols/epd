@@ -6,19 +6,37 @@ import { promisify } from "util"
 import semver from "semver"
 import { ScanOptions, ScanResult, PackageJson, PackageInfo, ScanReport } from "./types"
 
-// Import glob dynamically
+// Import glob with fallback
 let globPromise: any
 
 try {
-  const globModule = await import("glob")
-  globPromise = promisify(globModule.glob)
+  const { glob } = await import("glob")
+  globPromise = glob
 } catch (error) {
-  // Create a dummy function that will throw a more helpful error
-  globPromise = () => {
-    throw new Error(
-      "The 'glob' package is required for dependency scanning. " +
-        "Please install it with 'npm install --save-dev glob' or run 'epd install-scanner'.",
-    )
+  // Fallback implementation without glob
+  globPromise = async (pattern: string, options: any) => {
+    const fs = await import('fs/promises')
+    const path = await import('path')
+    
+    // Simple recursive file finder
+    async function findFiles(dir: string, ext: string): Promise<string[]> {
+      const files: string[] = []
+      try {
+        const entries = await fs.readdir(dir, { withFileTypes: true })
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry.name)
+          if (entry.isDirectory() && !entry.name.includes('node_modules')) {
+            files.push(...await findFiles(fullPath, ext))
+          } else if (entry.isFile() && entry.name.endsWith(ext)) {
+            files.push(fullPath)
+          }
+        }
+      } catch (e) {}
+      return files
+    }
+    
+    const ext = pattern.replace('**/*', '')
+    return findFiles(options.cwd || process.cwd(), ext)
   }
 }
 
@@ -152,23 +170,22 @@ function getDeclaredDependenciesFromPackage(
 }
 
 async function findAllSourceFiles(directory: string): Promise<string[]> {
-  const patterns = FILE_EXTENSIONS.map(ext => `**/*${ext}`)
   const files: string[] = []
   
-  for (const pattern of patterns) {
+  for (const ext of FILE_EXTENSIONS) {
     try {
-      const matches = await globPromise(pattern, {
+      const matches = await globPromise(`**/*${ext}`, {
         cwd: directory,
         ignore: IGNORE_PATTERNS,
         absolute: true,
       })
       files.push(...matches)
     } catch (error) {
-      // Continue if glob fails for a pattern
+      // Continue if pattern fails
     }
   }
   
-  return [...new Set(files)] // Remove duplicates
+  return [...new Set(files)]
 }
 
 async function findDependenciesInFiles(files: string[], directory: string): Promise<Set<string>> {
