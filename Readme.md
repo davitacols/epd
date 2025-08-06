@@ -26,7 +26,7 @@ yarn global add enhanced-peer-deps
 
 # Or with pnpm
 pnpm add -g enhanced-peer-deps
-
+```
 
 ## 🚀 Usage
 
@@ -96,12 +96,9 @@ When you run `epd`, it:
 1. **Analyzes** your project structure and detects workspaces
 2. **Collects** all peer dependencies from all packages
 3. **Resolves** version conflicts using a sophisticated algorithm:
-
-1. First tries to find a version that satisfies all requirements
-2. If none exists, queries the npm registry for available versions
-3. Selects the version that satisfies the most requirements
-
-
+   - First tries to find a version that satisfies all requirements
+   - If none exists, queries the npm registry for available versions
+   - Selects the version that satisfies the most requirements
 4. **Creates** a temporary package.json with the resolved dependencies
 5. **Installs** packages using your preferred package manager
 6. **Restores** your original package.json
@@ -109,12 +106,12 @@ When you run `epd`, it:
 
 ## 🛠️ Command Line Options
 
-| Option | Description
-|-----|-----
-| `--pm=<manager>` | Force a specific package manager (npm, yarn, pnpm)
-| `--debug` | Enable debug mode with verbose logging
-| `--interactive` | Enable interactive conflict resolution
-| `--config=<path>` | Use custom configuration file
+| Option | Description |
+|--------|-------------|
+| `--pm=<manager>` | Force a specific package manager (npm, yarn, pnpm) |
+| `--debug` | Enable debug mode with verbose logging |
+| `--interactive` | Enable interactive conflict resolution |
+| `--config=<path>` | Use custom configuration file |
 
 ## ⚙️ Configuration
 
