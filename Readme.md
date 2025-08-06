@@ -1,4 +1,4 @@
-# Enhanced Peer Dependencies (epd)
+# epd
 
 [![npm version](https://img.shields.io/npm/v/epd)](https://www.npmjs.com/package/epd)
 [![CI](https://github.com/davitacols/epd/actions/workflows/ci.yml/badge.svg)](https://github.com/davitacols/epd/actions/workflows/ci.yml)
