@@ -847,7 +847,13 @@ async function createTemporaryPackageJson(peerDeps, packageManager, originalPack
         }
 
         // Configure ignored peer dependencies for problematic packages
-        packageJson.pnpm.peerDependencyRules.ignoreMissing = packageJson.pnpm.peerDependencyRules.ignoreMissing || []
+        packageJson.pnpm.peerDependencyRules.ignoreMissing = packageJson.pnpm.peerDepende/**
+ * Enhanced Peer Dependencies (epd)
+ * Copyright (c) 2024 Enhanced Peer Dependencies (epd)
+ * Licensed under the MIT License
+ */
+
+ncyRules.ignoreMissing || []
 
         // Add any detected problematic packages to the ignore list
         for (const [pkg, missingPeers] of Object.entries(problematicPackages)) {
