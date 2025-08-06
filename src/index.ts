@@ -117,6 +117,11 @@ async function main() {
 
     // Handle different commands
     switch (args.command) {
+      case "resolve":
+        if (args.originalArgs.includes('--ai')) {
+          process.exit(await handleAIResolveCommand(args.originalArgs))
+        }
+        break
       case "scan":
         process.exit(await handleScanCommand(args.originalArgs))
       case "install-scanner":
@@ -158,6 +163,7 @@ async function main() {
       console.log('  epd doctor      - Run health diagnostics')
       console.log('  epd fix         - Auto-fix common issues')
       console.log('  epd clean       - Clean cache and temp files')
+      console.log('  epd resolve --ai - AI-powered conflict resolution')
       console.log('  epd run <script> - Run npm scripts')
       return 1
     }
@@ -350,6 +356,59 @@ async function handleScanCommand(args: string[]): Promise<number> {
   } catch (error) {
     console.error("❌ Error during scan:", error)
     return 1
+  }
+}
+
+// Handle AI-powered conflict resolution
+async function handleAIResolveCommand(args: string[]): Promise<number> {
+  try {
+    console.log('🤖 Analyzing conflicts with AI...')
+    
+    const { resolveWithAI } = await import('./ai-resolver.js')
+    const packageJson = await readPackageJsonWithCache('./package.json')
+    
+    // Detect conflicts (simplified for demo)
+    const conflicts: any[] = []
+    const projectContext = {
+      packageManager: await detectPackageManager(),
+      isMonorepo: await detectMonorepo(),
+      dependencies: { ...packageJson.dependencies, ...packageJson.devDependencies }
+    }
+    
+    const preferences = {
+      preferStable: !args.includes('--latest'),
+      riskTolerance: args.includes('--aggressive') ? 'high' as const : 'medium' as const
+    }
+    
+    const resolutions = await resolveWithAI(conflicts, projectContext, preferences)
+    
+    console.log('\n🎯 AI Recommendations:')
+    resolutions.forEach(res => {
+      console.log(`\n📦 ${res.package}:`)
+      console.log(`   Recommended: ${res.recommendedVersion} (${Math.round(res.confidence * 100)}% confidence)`)
+      console.log(`   Reasoning: ${res.reasoning}`)
+      
+      if (res.alternatives.length > 0) {
+        console.log('   Alternatives:')
+        res.alternatives.forEach(alt => {
+          console.log(`     - ${alt.version}: ${alt.pros.join(', ')}`)
+        })
+      }
+    })
+    
+    return 0
+  } catch (error) {
+    console.error('❌ AI resolution failed:', error)
+    return 1
+  }
+}
+
+async function detectMonorepo(): Promise<boolean> {
+  try {
+    const packageJson = await readPackageJsonWithCache('./package.json')
+    return !!(packageJson.workspaces || existsSync('lerna.json') || existsSync('pnpm-workspace.yaml'))
+  } catch {
+    return false
   }
 }
 

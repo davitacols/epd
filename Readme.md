@@ -1,7 +1,9 @@
 # Enhanced Peer Dependencies (epd)
 
-[![npm version](https://img.shields.io/npm/v/enhanced-peer-deps.svg)](https://www.npmjs.com/package/enhanced-peer-deps)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/epd)](https://www.npmjs.com/package/epd)
+[![CI](https://github.com/davitacols/epd/actions/workflows/ci.yml/badge.svg)](https://github.com/davitacols/epd/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/davitacols/epd)](https://github.com/davitacols/epd/blob/main/LICENSE)
+[![Codecov](https://codecov.io/gh/davitacols/epd/branch/main/graph/badge.svg)](https://codecov.io/gh/davitacols/epd)
 
 A smart CLI tool that intelligently resolves peer dependency conflicts across npm, yarn, and pnpm projects.
 

@@ -1,5 +1,5 @@
 {
-  "name": "enhanced-peer-deps",
+  "name": "epd",
   "version": "1.3.3",
   "description": "Enhanced peer dependency resolution for npm, yarn, and pnpm",
   "type": "module",
@@ -17,6 +17,7 @@
     "fix": "node dist/index.js fix",
     "clean": "rimraf dist",
     "install-scanner": "node dist/index.js install-scanner",
+    "resolve-ai": "node dist/index.js resolve --ai",
     "prepublishOnly": "npm run build",
     "dev": "tsc --watch",
     "lint": "eslint src/**/*.ts",

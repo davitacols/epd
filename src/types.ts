@@ -40,3 +40,11 @@ export interface PackageJson {
 }
 
 export type PackageManager = 'npm' | 'yarn' | 'pnpm';
+
+export interface ConflictResolution {
+  package: string;
+  version: string;
+  strategy: 'ai' | 'heuristic' | 'manual';
+  confidence?: number;
+  reasoning?: string;
+}
