@@ -4,7 +4,7 @@
   "description": "Enhanced peer dependency resolution for npm, yarn, and pnpm",
   "type": "module",
   "bin": {
-    "epd": "./dist/index.js"
+    "epd": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -55,7 +55,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/davitacols/epd.git"
+    "url": "git+https://github.com/davitacols/epd.git"
   },
   "bugs": {
     "url": "https://github.com/davitacols/epd/issues"
