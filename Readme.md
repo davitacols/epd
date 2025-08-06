@@ -3,7 +3,6 @@
 [![npm version](https://img.shields.io/npm/v/epd)](https://www.npmjs.com/package/epd)
 [![CI](https://github.com/davitacols/epd/actions/workflows/ci.yml/badge.svg)](https://github.com/davitacols/epd/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/davitacols/epd)](https://github.com/davitacols/epd/blob/main/LICENSE)
-[![Codecov](https://codecov.io/gh/davitacols/epd/branch/main/graph/badge.svg)](https://codecov.io/gh/davitacols/epd)
 
 A smart CLI tool that intelligently resolves peer dependency conflicts across npm, yarn, and pnpm projects.
 
@@ -21,13 +20,13 @@ A smart CLI tool that intelligently resolves peer dependency conflicts across np
 
 ```bash
 # Install globally
-npm install -g enhanced-peer-deps
+npm install -g epd
 
 # Or with yarn
-yarn global add enhanced-peer-deps
+yarn global add epd
 
 # Or with pnpm
-pnpm add -g enhanced-peer-deps
+pnpm add -g epd
 ```
 
 ## 🚀 Usage
