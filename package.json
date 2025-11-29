@@ -1,6 +1,6 @@
 {
   "name": "epd",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "Enhanced peer dependency resolution for npm, yarn, and pnpm",
   "type": "module",
   "bin": {
@@ -11,6 +11,11 @@
     "test": "node --test test/index.test.js",
     "scan": "node dist/index.js scan",
     "security": "node dist/index.js security",
+    "health": "node dist/index.js health --score --recommendations",
+    "optimize": "node dist/index.js optimize",
+    "licenses": "node dist/index.js licenses --report",
+    "update": "node dist/index.js update --safe",
+    "resolve": "node dist/index.js resolve --smart",
     "outdated": "node dist/index.js outdated",
     "interactive": "node dist/index.js interactive",
     "doctor": "node dist/index.js doctor",
@@ -18,10 +23,12 @@
     "clean": "rimraf dist",
     "install-scanner": "node dist/index.js install-scanner",
     "resolve-ai": "node dist/index.js resolve --ai",
+    "install-global": "node install-epd-globally.js",
     "prepublishOnly": "npm run build",
     "dev": "tsc --watch",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\"",
+    "docs": "node docs/serve.js",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -34,7 +41,11 @@
   ],
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "epd": "^1.4.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
   "devDependencies": {
     "@types/node": "^20.10.5",
     "@types/semver": "^7.5.6",

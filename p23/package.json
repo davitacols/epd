@@ -1,0 +1,14 @@
+{
+  "name": "screenshot-demo",
+  "version": "1.0.0",
+  "description": "Demo project for Product Hunt screenshots",
+  "dependencies": {
+    "react": "^17.0.0",
+    "@testing-library/react": "^13.0.0",
+    "react-router-dom": "^6.8.0",
+    "@mui/material": "^5.11.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0"
+  }
+}

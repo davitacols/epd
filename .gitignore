@@ -23,3 +23,38 @@ coverage/
 *.swp
 .DS_Store
 Thumbs.db
+
+# EPD specific
+.epd/
+package.json.backup
+*.backup
+test-project*/
+epd-demo/
+screenshot-demo/
+
+# Marketing and documentation (except key ones)
+marketing/
+scripts/
+demo/
+integration/
+npm-plugin/
+*.md
+!README.md
+!LICENSE
+!docs/CONTRIBUTING.md
+
+# Additional files
+ADOPTION-STRATEGY.md
+CHANGELOG.md
+epd-api-doc.md
+INTEGRATION.md
+WINDOWS-SETUP.md
+install-windows.ps1
+npm-epd.bat
+install-epd-globally.js
+lib-epd.*
+test-epd.js
+dependency-scanner.js
+index.js
+devfile.yaml
+.epdrc.example

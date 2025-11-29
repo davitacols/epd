@@ -2,8 +2,7 @@ import fs from "fs/promises"
 import path from "path"
 import { existsSync } from "fs"
 import { execSync } from "child_process"
-import { promisify } from "util"
-// import semver from "semver"
+
 import { ScanOptions, ScanResult, PackageJson, PackageInfo, ScanReport } from "./types"
 
 // Import glob with fallback

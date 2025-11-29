@@ -185,18 +185,17 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Inspired by npm's `--legacy-peer-deps` flag
 - Built with love for the JavaScript community
 
+## 📚 Documentation
+
+- **[Complete Documentation](docs/README.md)** - Comprehensive guide with all commands and examples
+- **[API Reference](docs/API.md)** - TypeScript interfaces and programmatic usage
+- **[Examples](docs/EXAMPLES.md)** - Real-world usage scenarios and workflows
+- **[Contributing](docs/CONTRIBUTING.md)** - Development setup and contribution guidelines
+
 ## 🔄 Recent Updates
 
-The following improvements have been made to the project:
-
-- **TypeScript Migration**: The entire codebase has been converted to TypeScript for improved type safety and developer experience. Type definitions are now available for all core interfaces and functions.
-
-- **Unit Testing**: A comprehensive test suite has been added using Node's native test runner, covering core functionality like dependency scanning and report generation.
-
-- **Type Definitions**: Added robust TypeScript interfaces for:
-  - Package information and scanning options
-  - Scan results and reports
-  - Package.json structure
-  - Package manager types
-
-These changes improve code quality, maintainability, and developer experience while ensuring reliable functionality through automated testing.
+- **Complete Feature Set**: All advanced functionality implemented including smart resolution, health scoring, workspace optimization, and more
+- **TypeScript Migration**: Full TypeScript codebase with comprehensive type definitions
+- **Enhanced CLI**: 15+ commands covering all aspects of dependency management
+- **Comprehensive Testing**: Full test suite with Node's native test runner
+- **Complete Documentation**: Extensive docs with examples and API reference

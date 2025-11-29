@@ -1,40 +1,33 @@
-import { execSync } from 'child_process';
-import { Cache } from './cache.js';
+export interface RegistryPackageInfo {
+  name: string;
+  versions: string[];
+  latest: string;
+  'dist-tags': Record<string, string>;
+}
 
-export async function getPackageVersions(packageName: string): Promise<string[]> {
-  const cacheKey = `versions-${packageName}`;
-  const cached = await Cache.get(cacheKey);
-  if (cached) return cached;
-
+export async function fetchPackageVersions(packageName: string): Promise<string[]> {
   try {
-    const result = execSync(`npm view ${packageName} versions --json`, { 
-      encoding: 'utf-8',
-      stdio: 'pipe'
-    });
-    const versions = JSON.parse(result);
-    const versionList = Array.isArray(versions) ? versions : [versions];
+    const response = await fetch(`https://registry.npmjs.org/${packageName}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
     
-    await Cache.set(cacheKey, versionList, 1800000); // 30min cache
-    return versionList;
+    const data = await response.json();
+    return Object.keys(data.versions || {}).reverse();
   } catch (error) {
+    console.warn(`⚠️ Could not fetch versions for ${packageName}:`, error);
     return [];
   }
 }
 
 export async function getLatestVersion(packageName: string): Promise<string | null> {
-  const cacheKey = `latest-${packageName}`;
-  const cached = await Cache.get(cacheKey);
-  if (cached) return cached;
-
   try {
-    const result = execSync(`npm view ${packageName} version`, { 
-      encoding: 'utf-8',
-      stdio: 'pipe'
-    }).trim();
+    const response = await fetch(`https://registry.npmjs.org/${packageName}/latest`);
+    if (!response.ok) return null;
     
-    await Cache.set(cacheKey, result, 1800000);
-    return result;
-  } catch (error) {
+    const data = await response.json();
+    return data.version || null;
+  } catch {
     return null;
   }
 }
